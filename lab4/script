@@ -1,0 +1,55 @@
+stop_flag=1
+while test $stop_flag -eq 1
+do 
+echo "1)Information about author"
+echo "2)Number"
+echo "3)Save file with list filsers"
+echo "4)Check exist file"
+echo "5)Exit"
+read n
+case "$n" in
+1)
+echo "Sherbenko Maksim"
+;;
+2)
+echo "Input number of computer"
+read Ncomp
+echo "Input your number in the list"
+read Nlist
+echo "Input your age"
+read age
+sum=`expr $Ncomp + $Nlist`
+x=`expr $sum \* $age`
+echo "result=$x"
+;;
+3)
+cd ~
+echo "Input directory"
+read way
+if test -r $way
+then
+        cd $way
+        ls > list
+else 
+echo "Directory does not found"
+fi
+;;
+4)
+cd ~
+echo "Input directory to file"
+read way2
+echo "Input file name"
+read name
+if test -r $way2
+then
+        cd $way2
+        ls -l $name 
+else 
+echo "Directory does not found"
+fi
+;;
+5)
+stop_flag=0
+;;
+esac
+done
